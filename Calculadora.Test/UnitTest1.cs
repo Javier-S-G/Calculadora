@@ -9,7 +9,10 @@ namespace Calculadora.Test
     public class UnitTest1
     {
         OperationService op = new OperationService();
-        Calculator calc = new Calculator();
+        
+            
+
+        Calculator calc = new Calculator(0,0);
 
         /// <summary>
         /// Happy path
@@ -18,42 +21,54 @@ namespace Calculadora.Test
         [TestMethod]
         public void TestSuma_Ok()
         {
-            var s = op.Suma(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Suma(calc);
             Assert.AreEqual(15, s);
         }
 
         [TestMethod]
         public void TestResta_Ok()
         {
-            var s = op.Resta(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Resta(calc);
             Assert.AreEqual(5, s);
         }
 
         [TestMethod]
         public void TestMultiplication_Ok()
         {
-            var s = op.Multiplicacion(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Multiplicacion(calc);
             Assert.AreEqual(50, s);
         }
 
         [TestMethod]
         public void TestDivision_Cociente_Ok()
         {
-            var s = op.Division(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Division(calc);
             Assert.AreEqual(2, s.Item1);
         }
 
         [TestMethod]
         public void TestDivision_Resto_Ok()
         {
-            var s = op.Division(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Division(calc);
             Assert.AreEqual(0, s.Item2);
         }
 
         [TestMethod]
         public void TestDivision_Null()
         {
-            Assert.IsNull(op.Division(2, 0));
+            calc.n1 = 10;
+            calc.n2 = 0;
+            Assert.IsNull(op.Division(calc));
         }
 
         /// <summary>
@@ -62,28 +77,36 @@ namespace Calculadora.Test
         [TestMethod]
         public void TestSuma_Fail()
         {
-            var s = op.Suma(50, 40);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Suma(calc);
             Assert.AreNotEqual(120, s);
         }
 
         [TestMethod]
         public void TestResta_Fail()
         {
-            var s = op.Resta(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Resta(calc);
             Assert.AreNotEqual(8, s);
         }
 
         [TestMethod]
         public void TestMultiplication_Fail()
         {
-            var s = op.Multiplicacion(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Multiplicacion(calc);
             Assert.AreNotEqual(24, s);
         }
 
         [TestMethod]
         public void TestDivision_Fail()
         {
-            var s = op.Division(10, 5);
+            calc.n1 = 10;
+            calc.n2 = 5;
+            var s = op.Division(calc);
             Assert.AreNotEqual(14, s);
         }
 
